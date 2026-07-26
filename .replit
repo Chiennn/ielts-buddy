@@ -1,0 +1,30 @@
+run = "cd apps/backend && npm start"
+modules = ["nodejs-20"]
+
+[env]
+REPLIT_CLUSTER = "primary"
+
+[ports]
+5000 = { expose = true, description = "Frontend" }
+3000 = { expose = true, description = "Backend" }
+
+[nix]
+channel = "stable-23_11"
+
+[unitTest]
+language = "nodejs"
+
+[languages.javascript]
+pattern = "**/{*.js,*.jsx,*.ts,*.tsx}"
+
+[debugger]
+support = true
+
+[packager]
+language = "nodejs"
+ignoreDefaultDependencies = true
+
+[packager.features]
+packageSearch = true
+guessImports = true
+enableGuessImports = true
