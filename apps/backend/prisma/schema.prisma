@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Learner {
+  id             String   @id @default(cuid())
+  name           String
+  grade          Int
+  cefrLevel      String?  // A1, A2, B1, B2, C1, C2
+  targetIelts    String?
+  xp             Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  testAttempts TestAttempt[]
+}
+
+model Question {
+  id        String   @id @default(cuid())
+  skill     String   // reading, grammar, listening, speaking, writing
+  type      String   // mcq, speaking, writing
+  prompt    String
+  sub       String?  // subtitle/context
+  audioUrl  String?  // for listening questions
+  options   Json?    // ["option1", "option2", ...] for MCQ
+  answer    Int?     // index of correct answer (MCQ only)
+  level     String   // A1, A2, B1, B2, C1, C2 (difficulty)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TestAttempt {
+  id         String   @id @default(cuid())
+  learnerId  String
+  answers    Json     // { questionId: answer }
+  scores     Json?    // { listening: 55, reading: 60, speaking: 38, writing: 45 }
+  cefrResult String?  // A1, A2, B1, B2, C1, C2
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  learner    Learner   @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+}

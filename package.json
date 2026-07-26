@@ -1,0 +1,17 @@
+{
+  "name": "ielts-buddy",
+  "version": "0.0.1",
+  "description": "IELTS Buddy - Interactive learning platform",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "cd apps/frontend && npm run dev",
+    "dev:backend": "cd apps/backend && npm start",
+    "build:frontend": "cd apps/frontend && npm run build",
+    "build:backend": "cd apps/backend && npm run build",
+    "install:all": "npm install && cd apps/frontend && npm install && cd ../backend && npm install",
+    "setup": "npm run install:all"
+  },
+  "keywords": ["IELTS", "education", "learning"],
+  "author": "",
+  "license": "MIT"
+}
