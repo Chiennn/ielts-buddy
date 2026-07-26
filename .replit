@@ -1,4 +1,4 @@
-run = "cd apps/backend && npm start"
+run = "cd apps/backend && npm install && cd ../.. && cd apps/frontend && npm install && npm run build && cd ../../apps/backend && npm start"
 modules = ["nodejs-20"]
 
 [env]
