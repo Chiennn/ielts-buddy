@@ -14,8 +14,9 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const learnerRes = await fetch('http://localhost:5000/api/learners');
-        const testRes = await fetch('http://localhost:5000/api/questions?level=A2');
+        const API_URL = 'https://ielts-buddy-api.onrender.com';
+        const learnerRes = await fetch(`${API_URL}/api/learners`);
+        const testRes = await fetch(`${API_URL}/api/questions?level=A2`);
 
         if (!learnerRes.ok || !testRes.ok) throw new Error('Failed to fetch');
 

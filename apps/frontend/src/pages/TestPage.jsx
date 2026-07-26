@@ -28,7 +28,8 @@ export default function TestPage({ selectedLearner, testData }) {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/attempts', {
+      const API_URL = 'https://ielts-buddy-api.onrender.com';
+      const res = await fetch(`${API_URL}/api/attempts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
