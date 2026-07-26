@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "npx prisma migrate deploy && node src/main.js",
+    "start": "node src/main.js",
     "dev": "node --watch src/main.js",
     "build": "echo 'No build step needed for Node.js backend'",
     "seed": "node prisma/seed.js",
